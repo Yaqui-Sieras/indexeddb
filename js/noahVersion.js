@@ -70,6 +70,19 @@ window.onload = async () => {
     let N = casillaNombre.value;
     let D = casillaDNI.value;
 
+    if (N === "" || D === "") {
+      if (N === "") {
+        casillaNombre.classList.add("campo_requerido");
+      }
+
+      if (D === "") {
+        casillaDNI.classList.add("campo_requerido");
+      }
+
+      alert("Debe rellenar los campos requeridos");
+      return;
+    }
+
     let transaccion = bd.transaction(["Contactos"], "readwrite");
     let tablaContactos = transaccion.objectStore("Contactos");
 

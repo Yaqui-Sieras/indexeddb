@@ -91,6 +91,15 @@
 
 .formulario__entrada {
   text-align: center;
+  border: 1px solid #2d2d2d;
+}
+
+.formulario__entrada:focus {
+  outline: none;
+}
+
+.campo_requerido {
+  outline: 1px solid red;
 }
 
 .estructura__botones {
