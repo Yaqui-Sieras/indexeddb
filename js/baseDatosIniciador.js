@@ -36,17 +36,4 @@ async function IniciarBaseDatos(detallesBD) {
   });
 }
 
-async function versionBD(nombreBD) {
-  return new Promise((res, err) => {
-    let solicitudApertura = indexedDB.open(nombreBD);
-    solicitudApertura.onerror = (evento) => {
-      err(evento.target.error);
-    };
-
-    solicitudApertura.onsuccess = (evento) => {
-      res(evento.target.result.version);
-    };
-  });
-}
-
-export { IniciarBaseDatos, versionBD };
+export { IniciarBaseDatos };

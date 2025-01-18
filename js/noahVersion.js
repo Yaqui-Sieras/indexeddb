@@ -1,4 +1,4 @@
-import { IniciarBaseDatos, versionBD } from "./baseDatosIniciador.js";
+import { IniciarBaseDatos } from "./baseDatosIniciador.js";
 
 let bd;
 
@@ -61,6 +61,7 @@ window.onload = async () => {
   console.log("Iniciando Base de Datos...");
   bd = await IniciarBaseDatos(detallesBD);
   console.log("Base de Datos iniciada");
+  console.log("La version actual es la nro: " + bd.version);
   mostrarLista();
 
   //BtnActualizar.onclick = () => {
