@@ -23,17 +23,41 @@
                     <h2>Sin contactos</h2>
                 </article>
             </section>
-            <form class="contenido__formulario">
-                <label>
-                    Nombre : <input type="text" id="nombre" class="formulario__entrada" placeholder="Nombre">
-                </label>
-                <label>
-                    DNI : <input type="text" id="dni" class="formulario__entrada" placeholder="DNI">
-                </label>
-                <button type="button" id="btn-guardar">Guardar</button>
-                <button type="button" id="btn-actualizar">Actualizar</button>
-                <button type="button" id="btn-cancelar">Cancelar</button>
-            </form>
+            <div class="contenido__cajaFormulario">
+                <form class="contenido__formulario">
+                    <table class="formulario__estructura">
+                        <tr class="estructura__campos">
+                            <td class="estructura__label">
+                                <label for="nombre" class="formulario__label">
+                                    Nombre :
+                                </label>
+                            </td>
+                            <td class="estructura__entrada">
+                                <input type="text" id="nombre" class="formulario__entrada" placeholder="Nombre">
+                            </td>
+                        </tr>
+                        <tr class="estructura__campos">
+                            <td class="estructura__label">
+                                <label for="dni" class="formulario__label">
+                                    DNI :
+                                </label>
+                            </td>
+                            <td class="estructura__entrada">
+                                <input type="text" id="dni" class="formulario__entrada" placeholder="DNI">
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="estructura__botones">
+                        <div class="estructura__confirmacion">
+                            <button type="button" id="btn-guardar">Guardar</button>
+                            <button type="button" id="btn-actualizar">Actualizar</button>
+                        </div>
+                        <div class="estructura__cancelacion">
+                            <button type="button" id="btn-cancelar">Cancelar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </main>
         <footer class="pag__footer">
             <p>Yaqui Sieras &copy; 2025</p>

@@ -57,21 +57,65 @@
   background: #2d2d2d;
 }
 
-.contenido__formulario {
+.contenido__cajaFormulario {
   width: 50%;
   min-height: 80vh;
   padding: 1rem;
+  background: #1d1d1d;
+}
+
+.contenido__formulario {
+  width: 100%;
+  min-height: 80vh;
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  background: #1d1d1d;
+}
+
+.formulario__estructura {
+}
+
+.estructura__campos {
+}
+
+.estructura__label {
+  width: 50%;
+  text-align: center;
+}
+
+.estructura__entrada {
+  width: 50%;
 }
 
 .formulario__entrada {
   text-align: center;
-  display: inline;
+}
+
+.estructura__botones {
+  width: 100%;
+  margin-block-start: 1rem;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.estructura__confirmacion {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.estructura__cancelacion {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .pag__footer {
