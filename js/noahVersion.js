@@ -25,34 +25,46 @@ let detallesBD = {
   ],
 };
 
-window.onload = async () => {
-  let listaContactos = document.querySelector("#lista");
-  let casillaNombre = document.querySelector("#nombre");
-  let casillaDNI = document.querySelector("#dni");
-  let BtnGuardar = document.querySelector("#btn-guardar");
-  let BtnActualizar = document.querySelector("#btn-actualizar");
-  let BtnCancelar = document.querySelector("#btn-cancelar");
+let listaContactos = document.querySelector("#lista");
+let casillaNombre = document.querySelector("#nombre");
+let casillaDNI = document.querySelector("#dni");
+let BtnGuardar = document.querySelector("#btn-guardar");
+let BtnActualizar = document.querySelector("#btn-actualizar");
+let BtnCancelar = document.querySelector("#btn-cancelar");
 
+window.onload = async () => {
   function mostrarLista() {
     listaContactos.innerHTML = "";
+    let articulo;
+    let contenido;
+
     let transaccion = bd.transaction(["Contactos"]);
     let tabla = transaccion.objectStore("Contactos");
     let puntero = tabla.openCursor();
     puntero.onsuccess = (evento) => {
       let fila = evento.target.result;
       if (fila) {
-        listaContactos.innerHTML +=
-          "<article class='lista__contacto'>" +
-          "<h2>" +
-          fila.value.Nombre +
-          "</h2>" +
-          "<h2>" +
-          fila.value.DNI +
-          "</h2>" +
-          "<button class='btn-actualizar' onclick='modificarDatos(" +
-          fila.key +
-          ")'>Actualizar</button>" +
-          "</article>";
+        articulo = document.createElement("article");
+        articulo.classList.add("lista__contacto");
+
+        contenido = document.createElement("h2");
+        contenido.textContent = fila.value.Nombre;
+        articulo.appendChild(contenido);
+
+        contenido = document.createElement("h2");
+        contenido.textContent = fila.value.DNI;
+        articulo.appendChild(contenido);
+
+        contenido = document.createElement("button");
+        contenido.classList.add("btn-editar");
+        contenido.value = fila.value.ID;
+        contenido.textContent = "Editar";
+        contenido.onclick = (evento) => {
+          modificarDatos(evento.target.value);
+        };
+        articulo.appendChild(contenido);
+
+        listaContactos.appendChild(articulo);
         fila.continue();
       }
     };
@@ -63,8 +75,6 @@ window.onload = async () => {
   console.log("Base de Datos iniciada");
   console.log("La version actual es la nro: " + bd.version);
   mostrarLista();
-
-  //BtnActualizar.onclick = () => {
 
   BtnGuardar.onclick = () => {
     let N = casillaNombre.value;
@@ -100,14 +110,17 @@ window.onload = async () => {
   };
 
   function modificarDatos(ID) {
+    ID = parseInt(ID);
     let transaccion = bd.transaction(["Contactos"], "readwrite");
     let tablaContactos = transaccion.objectStore("Contactos");
     let solicitud = tablaContactos.get(ID);
-    solicitud.onsuccess = () => {
+    solicitud.onsuccess = (evento) => {
       let contacto = solicitud.result;
-      casillaNombre = contacto.nombre;
-      casillaDNI = contacto.dni;
-      tablaContactos.put(contacto);
+      casillaNombre.value = contacto.Nombre;
+      casillaDNI.value = contacto.DNI;
+      //tablaContactos.put(contacto);
     };
   }
+
+  //BtnActualizar.onclick = () => {
 };
