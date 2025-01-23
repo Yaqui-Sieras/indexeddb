@@ -32,6 +32,12 @@ let BtnGuardar = document.querySelector("#btn-guardar");
 let BtnCancelar = document.querySelector("#btn-cancelar");
 
 window.onload = async () => {
+  const fecha = new Date();
+  let anhoCopy = document.querySelector("#anhoCopy");
+  if (parseInt(anhoCopy.textContent) < fecha.getFullYear()) {
+    anhoCopy.innerHTML = fecha.getFullYear();
+  }
+
   function mostrarLista() {
     listaContactos.innerHTML = "";
     let articulo;
