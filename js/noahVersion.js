@@ -29,7 +29,6 @@ let listaContactos = document.querySelector("#lista");
 let casillaNombre = document.querySelector("#nombre");
 let casillaDNI = document.querySelector("#dni");
 let BtnGuardar = document.querySelector("#btn-guardar");
-let BtnActualizar = document.querySelector("#btn-actualizar");
 let BtnCancelar = document.querySelector("#btn-cancelar");
 
 window.onload = async () => {
@@ -76,7 +75,9 @@ window.onload = async () => {
   console.log("La version actual es la nro: " + bd.version);
   mostrarLista();
 
-  BtnGuardar.onclick = () => {
+  BtnGuardar.onclick = (evento) => {
+    let tipo = evento.target.value;
+    console.log("Tipo de guardago: " + tipo);
     let N = casillaNombre.value;
     let D = casillaDNI.value;
 
@@ -96,10 +97,18 @@ window.onload = async () => {
     let transaccion = bd.transaction(["Contactos"], "readwrite");
     let tablaContactos = transaccion.objectStore("Contactos");
 
-    tablaContactos.add({
+    let datosaGuardar = {
       Nombre: N,
       DNI: D,
-    });
+    };
+
+    if (tipo === "crear") {
+      tablaContactos.add(datosaGuardar);
+    } else {
+      datosaGuardar.ID = parseInt(BtnGuardar.value);
+      tablaContactos.put(datosaGuardar);
+      BtnGuardar.value = "guardar";
+    }
 
     transaccion.oncomplete = () => {
       mostrarLista();
@@ -118,6 +127,7 @@ window.onload = async () => {
       let contacto = solicitud.result;
       casillaNombre.value = contacto.Nombre;
       casillaDNI.value = contacto.DNI;
+      BtnGuardar.value = ID;
       //tablaContactos.put(contacto);
     };
   }
