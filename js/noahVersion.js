@@ -11,7 +11,7 @@ let detallesBD = {
       autoInc: true,
       keyOpcional: [
         {
-          nombre: "Buscar nombre",
+          nombre: "Buscar Nombre",
           keyPath: "Nombre",
           unique: false,
         },
