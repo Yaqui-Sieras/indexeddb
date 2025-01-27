@@ -2,7 +2,9 @@ async function IniciarBaseDatos(detallesBD) {
   return new Promise((res, err) => {
     let solicitudApertura = indexedDB.open(detallesBD.nombreBD);
     solicitudApertura.onerror = (evento) => {
-      err(evento.target.error);
+      let error = evento.target.error;
+      let mensaje_error = `Tenemos un ERROR: ${error.code} / ${error.message}`;
+      err(mensaje_error);
     };
 
     solicitudApertura.onupgradeneeded = (evento) => {
