@@ -42,6 +42,7 @@ window.onload = async () => {
     listaContactos.innerHTML = "";
     let articulo;
     let contenido;
+    let contArticulos = 0;
 
     let transaccion = bd.transaction(["Contactos"]);
     let tabla = transaccion.objectStore("Contactos");
@@ -70,7 +71,18 @@ window.onload = async () => {
         articulo.appendChild(contenido);
 
         listaContactos.appendChild(articulo);
+        contArticulos++;
         fila.continue();
+      } else {
+        if (contArticulos === 0) {
+          console.log("No hay datos");
+          articulo = document.createElement("article");
+          articulo.classList.add("lista__vacia");
+          contenido = document.createElement("h2");
+          contenido.textContent = "Sin contactos";
+          articulo.appendChild(contenido);
+          listaContactos.appendChild(articulo);
+        }
       }
     };
   }
