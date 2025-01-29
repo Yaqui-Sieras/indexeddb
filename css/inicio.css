@@ -1,0 +1,30 @@
+.contenido__lista {
+  width: 100%;
+  min-height: 80vh;
+  padding: 1rem;
+  display: flex;
+  flex-flow: column;
+  justify-content: start;
+  align-items: center;
+  gap: 1rem;
+}
+
+.lista__contacto {
+  width: 80%;
+  padding: 1rem;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  background: #2d2d2d;
+}
+
+.lista__vacia {
+  width: 80%;
+  padding: 1rem;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  background: #2d2d2d;
+}
