@@ -1,30 +1,47 @@
-.contenido__lista {
+.contenido__contactos {
   width: 100%;
   min-height: 80vh;
   padding: 1rem;
   display: flex;
-  flex-flow: column;
-  justify-content: start;
-  align-items: center;
-  gap: 1rem;
-}
-
-.lista__contacto {
-  width: 80%;
-  padding: 1rem;
-  display: flex;
-  flex-flow: column;
+  flex-flow: row;
   justify-content: center;
   align-items: center;
-  background: #2d2d2d;
-}
 
-.lista__vacia {
-  width: 80%;
-  padding: 1rem;
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-  background: #2d2d2d;
+  .contactos__lista {
+    width: 80%;
+    min-height: calc(80vh - 2rem);
+    display: flex;
+    flex-flow: column;
+    justify-content: start;
+    align-items: center;
+    gap: 1rem;
+
+    .lista__contacto {
+      width: 80%;
+      padding: 1rem;
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
+      background: #2d2d2d;
+    }
+
+    .lista__vacia {
+      width: 80%;
+      padding: 1rem;
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
+      background: #2d2d2d;
+    }
+  }
+  .contactos__acciones {
+    width: 20%;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
 }

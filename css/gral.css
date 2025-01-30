@@ -10,11 +10,43 @@
 .pag__cabecera {
   width: 100vw;
   height: 10vh;
+  background: #2d2d2d;
   display: flex;
   flex-flow: row;
   justify-content: center;
   align-items: center;
-  background: #2d2d2d;
+  gap: 1rem;
+
+  .cabecera__logo {
+    height: 100%;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    .logo {
+      width: 3.2rem;
+      height: 3.2rem;
+      background: url(../ico/icons8-estrella-doodle-32.png);
+      background-size: contain;
+    }
+  }
+
+  .cabecera__buscador {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .cabecera__opciones {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .pag__contenido {
