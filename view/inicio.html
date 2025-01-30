@@ -20,15 +20,32 @@
 <body>
     <div class="pag">
         <header class="pag__cabecera">
-            <h1>Lista de contactos</h1>
+            <div class="cabecera__logo">
+                <div class="logo"></div>
+                <h1>Lista de contactos</h1>
+            </div>
+            <div class="cabecera__buscador">
+                <input type="text" id="buscador" class="buscador__input" placeholder="Buscar...">
+                <button type="button" id="btn-buscar" class="buscador__btn">Buscar</button>
+                <span>etiquetas</span>
+                <span>filtros</span>
+            </div>
+            <div class="cabecera__opciones">
+                <span>configuración</span>
+            </div>
         </header>
         <main class="pag__contenido">
-            <section id="lista" class="contenido__lista">
-                <article class="lista__vacia">
-                    <h2>Sin contactos</h2>
-                </article>
+            <section id="lista_contactos" class="contenido__contactos">
+                <div id="lista" class="contactos__lista">
+                    <article class="lista__vacia">
+                        <h2>Sin contactos</h2>
+                    </article>
+                </div>
+                <div class="contactos__acciones">
+                    <button type="button" id="btn-agregar" value="crear">Nuevo</button>
+                </div>
             </section>
-            <div class="contenido__cajaFormulario parte_oculta">
+            <section id="formulario" class="contenido__cajaFormulario parte_oculta">
                 <form class="contenido__formulario">
                     <div class="formulario__campo">
                         <label for="nombre" class="formulario__label">
@@ -51,7 +68,8 @@
                         </div>
                     </div>
                 </form>
-            </div>
+            </section>
+            <section id="vista_detallada" class="contenido__vistaDetallada parte_oculta"></section>
         </main>
         <footer class="pag__footer">
             <p>Yaqui Sieras &copy; <span id="anhoCopy">2024</span></p>
