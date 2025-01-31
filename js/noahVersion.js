@@ -25,11 +25,68 @@ let detallesBD = {
   ],
 };
 
+let lista__contacto = document.querySelector("#lista_contactos");
+let formulario = document.querySelector("#formulario");
+let vistaDetallada = document.querySelector("#vista_detallada");
+
+let BtonAgregar = document.querySelector("#btn-agregar");
+BtonAgregar.onclick = () => {
+  lista__contacto.classList.add("parte_oculta");
+  formulario.classList.remove("parte_oculta");
+};
+
+let buscador = document.querySelector("#buscador");
+let BtonBuscar = document.querySelector("#btn-buscar");
+
 let listaContactos = document.querySelector("#lista");
 let casillaNombre = document.querySelector("#nombre");
 let casillaDNI = document.querySelector("#dni");
 let BtnGuardar = document.querySelector("#btn-guardar");
+
+let estado = "lista";
 let BtnCancelar = document.querySelector("#btn-cancelar");
+
+BtnCancelar.onclick = () => {
+  formulario.classList.add("parte_oculta");
+  if (estado === "lista") {
+    lista__contacto.classList.remove("parte_oculta");
+  } else if (estado === "vistaDetallada") {
+    vistaDetallada.classList.remove("parte_oculta");
+  }
+};
+
+let BtnRetroceder = document.querySelector("#btn-retroceder");
+BtnRetroceder.onclick = () => {
+  vistaDetallada.classList.add("parte_oculta");
+  lista__contacto.classList.remove("parte_oculta");
+};
+
+let vista_campo_nombre = document.querySelector("#campo__nombre");
+let vista_campo_dni = document.querySelector("#campo__dni");
+
+let BtnEditar = document.querySelector("#btn-editar");
+/*
+BtnEditar.onclick = (evento) => {
+  mostrarDetalles(evento.target.value);
+};
+*/
+let BtnEliminar = document.querySelector("#btn-eliminar");
+/*
+BtnEliminar.onclick = (evento) => {
+  let ID = evento.target.value;
+  let transaccion = bd.transaction(["Contactos"], "readwrite");
+  let tablaContactos = transaccion.objectStore("Contactos");
+  let solicitud = tablaContactos.get(ID);
+  solicitud.onsuccess = () => {
+    let contacto = solicitud.result;
+    let ID = contacto.ID;
+    tablaContactos.delete(ID);
+    transaccion.oncomplete = () => {
+      mostrarLista();
+    };
+  };
+};
+*/
 
 window.onload = async () => {
   const fecha = new Date();
@@ -61,14 +118,11 @@ window.onload = async () => {
         contenido.textContent = fila.value.DNI;
         articulo.appendChild(contenido);
 
-        contenido = document.createElement("button");
-        contenido.classList.add("btn-editar");
-        contenido.value = fila.value.ID;
-        contenido.textContent = "Editar";
-        contenido.onclick = (evento) => {
-          modificarDatos(evento.target.value);
+        articulo.setAttribute("key", fila.key);
+
+        articulo.onclick = (evento) => {
+          mostrarDetalles(evento.target.getAttribute("key"));
         };
-        articulo.appendChild(contenido);
 
         listaContactos.appendChild(articulo);
         contArticulos++;
@@ -136,19 +190,19 @@ window.onload = async () => {
     casillaDNI.value = "";
   };
 
-  function modificarDatos(ID) {
+  function mostrarDetalles(ID) {
     ID = parseInt(ID);
     let transaccion = bd.transaction(["Contactos"], "readwrite");
     let tablaContactos = transaccion.objectStore("Contactos");
     let solicitud = tablaContactos.get(ID);
-    solicitud.onsuccess = (evento) => {
+    solicitud.onsuccess = () => {
       let contacto = solicitud.result;
-      casillaNombre.value = contacto.Nombre;
-      casillaDNI.value = contacto.DNI;
-      BtnGuardar.value = ID;
-      //tablaContactos.put(contacto);
+      lista__contacto.classList.add("parte_oculta");
+      vistaDetallada.classList.remove("parte_oculta");
+
+      vista_campo_nombre.textContent = contacto.Nombre;
+      vista_campo_dni.textContent = contacto.DNI;
+      BtnEditar.value = ID;
     };
   }
-
-  //BtnActualizar.onclick = () => {
 };
