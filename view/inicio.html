@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://yaqui-sieras.github.io/miReset-css/miReset.css" type="text/css">
     <link rel="stylesheet" href="../css/inicio.css" type="text/css">
     <link rel="stylesheet" href="../css/formulario.css" type="text/css">
+    <link rel="stylesheet" href="../css/vistaDetallada.css" type="text/css">
     <link rel="stylesheet" href="../css/gral.css" type="text/css">
     <!--
     <link rel="stylesheet" href="../miReset-css/docs/miReset.css" type="text/css">
@@ -69,7 +70,41 @@
                     </div>
                 </form>
             </section>
-            <section id="vista_detallada" class="contenido__vistaDetallada parte_oculta"></section>
+            <section id="vista_detallada" class="contenido__vistaDetallada parte_oculta">
+                <table class="vistaDetallada__tabla">
+                    <tr class="vistaDetallada__acciones">
+                        <td colspan="2">
+                            <button type="button" id="btn-retroceder">Atras</button>
+                        </td>
+                    </tr>
+                    <tr class="vistaDetallada__campo">
+                        <td>
+                            <label for="nombre_vista">Nombre :</label>
+                        </td>
+                        <td>
+                            <p id="campo__nombre">Nombre</p>
+                        </td>
+                    </tr>
+                    <tr class="vistaDetallada__campo">
+                        <td>
+                            <label for="dni_vista">DNI :</label>
+                        </td>
+                        <td>
+                            <p id="campo__dni">DNI</p>
+                        </td>
+                    </tr>
+                    <tr class="vistaDetallada__acciones">
+                        <td colspan="2">
+                            <button type="button" id="btn-editar" value="editar">Editar</button>
+                        </td>
+                    </tr>
+                    <tr class="vistaDetallada__acciones">
+                        <td colspan="2">
+                            <button type="button" id="btn-eliminar">Eliminar</button>
+                        </td>
+                    </tr>
+                </table>
+            </section>
         </main>
         <footer class="pag__footer">
             <p>Yaqui Sieras &copy; <span id="anhoCopy">2024</span></p>
