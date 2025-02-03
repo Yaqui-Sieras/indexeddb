@@ -1,6 +1,5 @@
 import { IniciarBaseDatos } from "./baseDatosIniciador.js";
-
-let bd;
+import { anhoCopyAuto } from "./anhoCopyAuto.js";
 
 let detallesBD = {
   nombreBD: "Datos",
@@ -25,7 +24,8 @@ let detallesBD = {
   ],
 };
 
-let lista__contacto = document.querySelector("#lista_contactos");
+let bd;
+
 let formulario = document.querySelector("#formulario");
 let vistaDetallada = document.querySelector("#vista_detallada");
 
@@ -89,11 +89,7 @@ BtnEliminar.onclick = (evento) => {
 */
 
 window.onload = async () => {
-  const fecha = new Date();
   let anhoCopy = document.querySelector("#anhoCopy");
-  if (parseInt(anhoCopy.textContent) < fecha.getFullYear()) {
-    anhoCopy.innerHTML = fecha.getFullYear();
-  }
 
   function mostrarLista() {
     listaContactos.innerHTML = "";
