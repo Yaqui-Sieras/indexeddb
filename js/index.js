@@ -33,7 +33,73 @@ let vista_detallada = document.querySelector("#vista_detallada");
 let estado = "lista";
 
 // Parte de lista de contacto
+
+function mostrarBusqueda(busqueda) {
+  listaContactos.innerHTML = "";
+
+  let transaccion = bd.transaction(["Contactos"]);
+  let tabla = transaccion.objectStore("Contactos");
+  let indice = tabla.index("Buscar Nombre");
+  let rango = IDBKeyRange.only(busqueda);
+  let puntero = indice.openCursor(rango);
+
+  let contArticulos = 0;
+  let articulo;
+  let contenido;
+  puntero.onsuccess = (evento) => {
+    let resultado = evento.target.result;
+
+    if (resultado) {
+      articulo = document.createElement("article");
+      articulo.classList.add("lista__contacto");
+
+      contenido = document.createElement("h2");
+      contenido.textContent = resultado.value.Nombre;
+      articulo.appendChild(contenido);
+
+      contenido = document.createElement("h2");
+      contenido.textContent = resultado.value.DNI;
+      articulo.appendChild(contenido);
+
+      articulo.setAttribute("key", resultado.key);
+
+      articulo.onclick = (evento) => {
+        mostrarDetalles(evento.target.getAttribute("key"));
+      };
+
+      listaContactos.appendChild(articulo);
+      contArticulos++;
+      resultado.continue();
+    } else {
+      if (contArticulos === 0) {
+        articulo = document.createElement("article");
+        articulo.classList.add("lista__vacia");
+        contenido = document.createElement("h2");
+        contenido.textContent = "Sin contactos";
+        articulo.appendChild(contenido);
+        listaContactos.appendChild(articulo);
+      }
+    }
+  };
+}
+
 let buscador = document.querySelector("#buscador");
+let busqueda = buscador.value;
+
+let nuevoBuscada = "";
+
+buscador.onkeyup = (evento) => {
+  nuevoBuscada = buscador.value;
+  if (nuevoBuscada !== busqueda) {
+    busqueda = nuevoBuscada;
+    if (busqueda === "") {
+      mostrarLista();
+    } else {
+      mostrarBusqueda(busqueda);
+    }
+  }
+};
+
 let BtonBuscar = document.querySelector("#btn-buscar");
 
 let listaContactos = document.querySelector("#lista");
