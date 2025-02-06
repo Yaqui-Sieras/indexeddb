@@ -61,7 +61,7 @@ function mostrarBusqueda(busqueda) {
       contenido.textContent = resultado.value.DNI;
       articulo.appendChild(contenido);
 
-      articulo.setAttribute("key", resultado.key);
+      articulo.setAttribute("key", resultado.value.ID);
 
       articulo.onclick = (evento) => {
         mostrarDetalles(evento.target.getAttribute("key"));
