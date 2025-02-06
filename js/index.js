@@ -172,19 +172,33 @@ function mostrarDetalles(ID) {
     BtnEliminar.value = ID;
 
     lista_contactos.classList.add("parte_oculta");
+    formulario.classList.add("parte_oculta");
     vista_detallada.classList.remove("parte_oculta");
   };
 }
 
 let BtnRetroceder = document.querySelector("#btn-retroceder");
 BtnRetroceder.onclick = () => {
-  vista_detallada.classList.add("parte_oculta");
-  lista_contactos.classList.remove("parte_oculta");
+  mostrarLista();
 };
 
 let BtnEditar = document.querySelector("#btn-editar");
 
-BtnEditar.onclick = (evento) => {};
+BtnEditar.onclick = (evento) => {
+  let ID = parseInt(evento.target.value);
+  let transaccion = bd.transaction(["Contactos"], "readwrite");
+  let tablaContactos = transaccion.objectStore("Contactos");
+  let solicitud = tablaContactos.get(ID);
+  solicitud.onsuccess = (evento) => {
+    let contacto = solicitud.result;
+    casillaNombre.value = contacto.Nombre;
+    casillaDNI.value = contacto.DNI;
+    BtnGuardar.value = ID;
+
+    vista_detallada.classList.add("parte_oculta");
+    formulario.classList.remove("parte_oculta");
+  };
+};
 
 let vista_campo_nombre = document.querySelector("#campo__nombre");
 let vista_campo_dni = document.querySelector("#campo__dni");
