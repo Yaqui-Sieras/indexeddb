@@ -40,7 +40,7 @@ function mostrarBusqueda(busqueda) {
   let transaccion = bd.transaction(["Contactos"]);
   let tabla = transaccion.objectStore("Contactos");
   let indice = tabla.index("Buscar Nombre");
-  let rango = IDBKeyRange.only(busqueda);
+  let rango = IDBKeyRange.bound(busqueda, busqueda + "~");
   let puntero = indice.openCursor(rango);
 
   let contArticulos = 0;
