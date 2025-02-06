@@ -153,6 +153,8 @@ BtnCancelar.onclick = () => {
   } else if (estado === "vistaDetallada") {
     vista_detallada.classList.remove("parte_oculta");
   }
+  casillaNombre.classList.remove("campo_requerido");
+  casillaDNI.classList.remove("campo_requerido");
 };
 
 // Parte de Vista detallada
