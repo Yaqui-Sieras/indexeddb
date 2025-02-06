@@ -130,7 +130,7 @@ BtnGuardar.onclick = (evento) => {
   } else {
     datosaGuardar.ID = parseInt(BtnGuardar.value);
     tablaContactos.put(datosaGuardar);
-    BtnGuardar.value = "guardar";
+    BtnGuardar.value = "crear";
   }
 
   transaccion.oncomplete = () => {
