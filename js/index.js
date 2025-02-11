@@ -100,8 +100,6 @@ buscador.onkeyup = (evento) => {
   }
 };
 
-let BtonBuscar = document.querySelector("#btn-buscar");
-
 let listaContactos = document.querySelector("#lista");
 
 let BtonAgregar = document.querySelector("#btn-agregar");
