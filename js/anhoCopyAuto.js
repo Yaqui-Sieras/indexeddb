@@ -1,12 +1,8 @@
 function anhoCopyAuto(anhoCopy) {
-  let respuesta;
   const fecha = new Date();
-  if (parseInt(anhoCopy) >= fecha.getFullYear()) {
-    respuesta = anhoCopy;
-  } else {
-    respuesta = fecha.getFullYear();
+  if (parseInt(anhoCopy.textContent) < fecha.getFullYear()) {
+    anhoCopy.textContent = fecha.getFullYear();
   }
-  return respuesta;
 }
 
 export { anhoCopyAuto };
