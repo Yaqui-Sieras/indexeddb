@@ -227,7 +227,9 @@ function mostrarLista() {
   listaContactos.innerHTML = "";
   let transaccion = bd.transaction(["Contactos"]);
   let tabla = transaccion.objectStore("Contactos");
-  let puntero = tabla.openCursor();
+  var indice = tabla.index("Buscar Nombre");
+  var puntero = indice.openCursor();
+  //let puntero = tabla.openCursor();
 
   let contactos = [];
   puntero.onsuccess = (evento) => {
