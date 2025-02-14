@@ -4,59 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="./ico/icons8-estrella-doodle-32.png" type="image/png">
-    <title>Prueba IndexDB</title>
-    <!-- Hojas de estilo -->
-    <link rel="stylesheet" href="https://yaqui-sieras.github.io/miReset-css/miReset.css" type="text/css">
-    <link rel="stylesheet" href="css/index.css" type="text/css">
-    <!--
-    <link rel="stylesheet" href="../miReset-css/docs/miReset.css" type="text/css">
-    -->
-
+    <title>Cargando...</title>
+    <script>
+        window.location.replace("view/inicio.html");
+    </script>
 </head>
 
 <body>
-    <div class="pag">
-        <header class="pag__cabecera">
-            <h1>Lista de contactos</h1>
-        </header>
-        <main class="pag__contenido">
-            <section id="lista" class="contenido__lista">
-                <article class="lista__vacia">
-                    <h2>Sin contactos</h2>
-                </article>
-            </section>
-            <div class="contenido__cajaFormulario">
-                <form class="contenido__formulario">
-                    <div class="formulario__campo">
-                        <label for="nombre" class="formulario__label">
-                            Nombre :
-                        </label>
-                        <input type="text" id="nombre" class="formulario__entrada" placeholder="Nombre">
-                    </div>
-                    <div class="formulario__campo">
-                        <label for="dni" class="formulario__label">
-                            DNI :
-                        </label>
-                        <input type="text" id="dni" class="formulario__entrada" placeholder="DNI">
-                    </div>
-                    <div class="formulario__botones">
-                        <div class="formulario__confirmacion">
-                            <button type="button" id="btn-guardar" value="crear">Guardar</button>
-                        </div>
-                        <div class="formulario__cancelacion">
-                            <button type="button" id="btn-cancelar">Cancelar</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </main>
-        <footer class="pag__footer">
-            <p>Yaqui Sieras &copy; <span id="anhoCopy">2024</span></p>
-        </footer>
-    </div>
 
-    <script type="module" src="js/noahVersion.js"></script>
 </body>
 
 </html>

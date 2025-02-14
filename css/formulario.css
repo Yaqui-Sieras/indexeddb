@@ -1,0 +1,68 @@
+.contenido__cajaFormulario {
+  width: 100%;
+  min-height: 80vh;
+  padding: 1rem;
+  background: #1d1d1d;
+}
+
+.contenido__formulario {
+  width: 100%;
+  min-height: 80vh;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.formulario__campo {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.formulario__label {
+  width: 50%;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.formulario__entrada {
+  width: 50%;
+  text-align: center;
+  border: 1px solid #2d2d2d;
+}
+
+.formulario__entrada:focus {
+  outline: none;
+}
+
+.campo_requerido {
+  outline: 1px solid red;
+}
+
+.formulario__botones {
+  width: 100%;
+  margin-block-start: 1rem;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.formulario__confirmacion {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.formulario__cancelacion {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+}

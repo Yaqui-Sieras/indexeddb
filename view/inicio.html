@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../ico/icons8-estrella-doodle-32.png" type="image/png" sizes="32x32">
+    <title>Prueba IndexDB</title>
+    <!-- Hojas de estilo -->
+    <link rel="stylesheet" href="https://yaqui-sieras.github.io/miReset-css/miReset.css" type="text/css">
+    <link rel="stylesheet" href="../css/inicio.css" type="text/css">
+    <link rel="stylesheet" href="../css/formulario.css" type="text/css">
+    <link rel="stylesheet" href="../css/vista_detallada.css" type="text/css">
+    <link rel="stylesheet" href="../css/gral.css" type="text/css">
+    <!--
+    <link rel="stylesheet" href="../miReset-css/docs/miReset.css" type="text/css">
+    -->
+
+</head>
+
+<body>
+    <div class="pag">
+        <header class="pag__cabecera">
+            <div class="cabecera__logo">
+                <div class="logo"></div>
+                <h1>Lista de contactos</h1>
+            </div>
+            <div class="cabecera__buscador">
+                <input type="text" id="buscador" class="buscador__input" placeholder="Buscar...">
+                <span>etiquetas</span>
+                <span>filtros</span>
+            </div>
+            <div class="cabecera__opciones">
+                <span>configuración</span>
+            </div>
+        </header>
+        <main class="pag__contenido">
+            <section id="lista_contactos" class="contenido__contactos">
+                <div id="lista" class="contactos__lista">
+                    <article class="lista__vacia">
+                        <h2>Sin contactos</h2>
+                    </article>
+                </div>
+                <div class="contactos__acciones">
+                    <button type="button" id="btn-agregar" value="crear">Nuevo</button>
+                </div>
+            </section>
+            <section id="formulario" class="contenido__cajaFormulario parte_oculta">
+                <form class="contenido__formulario">
+                    <div class="formulario__campo">
+                        <label for="nombre" class="formulario__label">
+                            Nombre :
+                        </label>
+                        <input type="text" id="nombre" class="formulario__entrada" placeholder="Nombre">
+                    </div>
+                    <div class="formulario__campo">
+                        <label for="dni" class="formulario__label">
+                            DNI :
+                        </label>
+                        <input type="text" id="dni" class="formulario__entrada" placeholder="DNI">
+                    </div>
+                    <div class="formulario__botones">
+                        <div class="formulario__confirmacion">
+                            <button type="button" id="btn-guardar" value="crear">Guardar</button>
+                        </div>
+                        <div class="formulario__cancelacion">
+                            <button type="button" id="btn-cancelar">Cancelar</button>
+                        </div>
+                    </div>
+                </form>
+            </section>
+            <section id="vista_detallada" class="contenido__vistaDetallada parte_oculta">
+                <table class="vistaDetallada__tabla">
+                    <tr class="vistaDetallada__acciones">
+                        <td colspan="2">
+                            <button type="button" id="btn-retroceder">Atras</button>
+                        </td>
+                    </tr>
+                    <tr class="vistaDetallada__campo">
+                        <td>
+                            <label for="nombre_vista">Nombre :</label>
+                        </td>
+                        <td>
+                            <p id="campo__nombre">Nombre</p>
+                        </td>
+                    </tr>
+                    <tr class="vistaDetallada__campo">
+                        <td>
+                            <label for="dni_vista">DNI :</label>
+                        </td>
+                        <td>
+                            <p id="campo__dni">DNI</p>
+                        </td>
+                    </tr>
+                    <tr class="vistaDetallada__acciones">
+                        <td colspan="2">
+                            <button type="button" id="btn-editar" value="editar">Editar</button>
+                        </td>
+                    </tr>
+                    <tr class="vistaDetallada__acciones">
+                        <td colspan="2">
+                            <button type="button" id="btn-eliminar">Eliminar</button>
+                        </td>
+                    </tr>
+                </table>
+            </section>
+        </main>
+        <footer class="pag__footer">
+            <p>Yaqui Sieras &copy; <span id="anhoCopy">2024</span></p>
+        </footer>
+    </div>
+
+    <script type="module" src="../js/index.js"></script>
+</body>
+
+</html>
