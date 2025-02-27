@@ -71,3 +71,7 @@
 .parte_oculta {
   display: none;
 }
+
+.sin_color {
+  color: transparent;
+}
