@@ -2,7 +2,6 @@
   width: 100%;
   min-height: 80vh;
   padding: 1rem;
-  background: #1d1d1d;
 }
 
 .contenido__formulario {
@@ -22,19 +21,19 @@
   align-items: center;
 }
 
-.formulario__label {
-  width: 50%;
-  text-align: center;
-  vertical-align: middle;
+.campo__contorno {
+  padding: 1rem;
+  border: 1px solid #2d2d2d;
+  border-radius: 0.5rem;
 }
 
-.formulario__entrada {
-  width: 50%;
+.campo__entrada {
+  width: 100%;
   text-align: center;
   border: 1px solid #2d2d2d;
 }
 
-.formulario__entrada:focus {
+.campo__entrada:focus {
   outline: none;
 }
 
