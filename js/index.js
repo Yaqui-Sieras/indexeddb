@@ -26,7 +26,8 @@ let BtonAgregar = document.querySelector("#btn-agregar");
 
 // Parte de formulario
 let casillaNombre = document.querySelector("#nombre");
-let casillaDNI = document.querySelector("#dni");
+let casillaApellido = document.querySelector("#apellido");
+let casillaDNI = document.querySelector("#DNI");
 let BtnGuardar = document.querySelector("#btn-guardar");
 let BtnCancelar = document.querySelector("#btn-cancelar");
 
@@ -35,15 +36,33 @@ let BtnRetroceder = document.querySelector("#btn-retroceder");
 let BtnEditar = document.querySelector("#btn-editar");
 let BtnEliminar = document.querySelector("#btn-eliminar");
 let vista_campo_nombre = document.querySelector("#campo__nombre");
+let vista_campo_apellido = document.querySelector("#campo__apellido");
 let vista_campo_dni = document.querySelector("#campo__dni");
 
 // Funciones auxiliares
+function mostrarLegenda(elemento) {
+  let valor = elemento.value;
+  let legenda = elemento.parentElement.children[0];
+
+  if (valor !== "") {
+    legenda.textContent = elemento.placeholder;
+    legenda.classList.remove("sin_color");
+  } else {
+    legenda.textContent = ".";
+    legenda.classList.add("sin_color");
+  }
+}
+
 function crearArticulo(contacto) {
   let articulo = document.createElement("article");
   articulo.classList.add("lista__contacto");
 
   let contenido = document.createElement("h2");
-  contenido.textContent = contacto.Nombre;
+  if (contacto.Apellido) {
+    contenido.textContent = contacto.Nombre + " " + contacto.Apellido;
+  } else {
+    contenido.textContent = contacto.Nombre;
+  }
   articulo.appendChild(contenido);
 
   contenido = document.createElement("h2");
@@ -83,7 +102,12 @@ function actualizarLista(contactos) {
 function actualizarContacto(datos) {
   let contacto_viejo = document.querySelector(`[key="${datos.ID}"]`);
 
-  contacto_viejo.children[0].textContent = datos.Nombre;
+  if (datos.Apellido) {
+    contacto_viejo.children[0].textContent =
+      datos.Nombre + " " + datos.Apellido;
+  } else {
+    contacto_viejo.children[0].textContent = datos.Nombre;
+  }
   contacto_viejo.children[1].textContent = datos.DNI;
 }
 
@@ -121,9 +145,22 @@ BtonAgregar.onclick = () => {
   formulario.classList.remove("parte_oculta");
 };
 
+casillaNombre.onkeyup = (evento) => {
+  mostrarLegenda(evento.target);
+};
+
+casillaApellido.onkeyup = (evento) => {
+  mostrarLegenda(evento.target);
+};
+
+casillaDNI.onkeyup = (evento) => {
+  mostrarLegenda(evento.target);
+};
+
 BtnGuardar.onclick = (evento) => {
   let tipo = evento.target.value;
   let N = casillaNombre.value;
+  let A = casillaApellido.value;
   let D = casillaDNI.value;
 
   if (N === "" || D === "") {
@@ -135,7 +172,7 @@ BtnGuardar.onclick = (evento) => {
   let transaccion = bd.transaction(["Contactos"], "readwrite");
   let tablaContactos = transaccion.objectStore("Contactos");
 
-  let datosaGuardar = { Nombre: N, DNI: D };
+  let datosaGuardar = { Nombre: N, Apellido: A, DNI: D };
 
   if (tipo === "crear") {
     tablaContactos.add(datosaGuardar);
@@ -195,6 +232,7 @@ BtnEditar.onclick = (evento) => {
   solicitud.onsuccess = () => {
     let contacto = solicitud.result;
     casillaNombre.value = contacto.Nombre;
+    casillaApellido.value = contacto.Apellido ?? "";
     casillaDNI.value = contacto.DNI;
     BtnGuardar.value = ID;
 
@@ -255,6 +293,7 @@ function mostrarDetalles(ID) {
   solicitud.onsuccess = () => {
     let contacto = solicitud.result;
     vista_campo_nombre.textContent = contacto.Nombre;
+    vista_campo_apellido.textContent = contacto.Apellido;
     vista_campo_dni.textContent = contacto.DNI;
     BtnEditar.value = ID;
     BtnEliminar.value = ID;
