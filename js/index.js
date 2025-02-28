@@ -288,6 +288,10 @@ BtnEditar.onclick = (evento) => {
     casillaDNI.value = contacto.DNI;
     BtnGuardar.value = ID;
 
+    mostrarLegenda(casillaNombre);
+    if (casillaApellido) mostrarLegenda(casillaApellido);
+    mostrarLegenda(casillaDNI);
+
     vista_detallada.classList.add("parte_oculta");
     formulario.classList.remove("parte_oculta");
   };
