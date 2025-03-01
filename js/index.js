@@ -1,11 +1,13 @@
 // Datos de configuración de la base de datos
 import { detallesBD } from "../bd/estructura.js";
+
 // Inicidor de la base de datos
 import { IniciarBaseDatos } from "./baseDatosIniciador.js";
+
 // Actualizador del anho del copyright
 import { anhoCopyAuto } from "./anhoCopyAuto.js";
 
-// Iniciar el contenedor de la base de datos
+// Base de datos
 let bd;
 
 // Estado de la página
