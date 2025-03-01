@@ -1,0 +1,221 @@
+/*
+Con este reset, se busca resolver:
+- Unificar el uso de Custom Properties.
+- Problemas de box-model mas generales.
+- Problemas con imagenes, videos e iconos svg.
+- Problemas con tipografias y etiquetas input en formularios. 
+- Unificar la tipografia de todas las etiquetas de una web.
+*/
+
+/* Aqui definimos los Custom properties*/
+:root {
+  color-scheme: light dark;
+  --color-oscuro: #0f0f0f;
+  --color-claro: #f0f0f0;
+  /* Tipografia */
+  --tipo-principal: Helvetica, Arial, Sans-serif;
+  --tipo-secundario: Verdana;
+  /* Tipografia */
+  --tamanho-raiz: 20px;
+  /* Color para las casillas de verificacion o botones de radio*/
+  accent-color: mediumvioletred;
+}
+
+/*
+Opcional
+Configuramos si un usuario a activado el modo de alto contraste. (WD)
+*/
+@media (prefers-contrast: high) {
+  :root {
+    --color-oscuro: black;
+    --color-claro: white;
+  }
+}
+
+/* Opcional */
+/* Desactivamos las animaciones en el caso de que el usuario haya configurado el modo activado sin animaciones. (WD) */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* Reseteamos los margenes y paddings de todas las etiquetas */
+* {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  vertical-align: baseline;
+}
+
+/* Evitamos problemas con imagenes */
+img,
+picture,
+video,
+iframe,
+figure {
+  max-width: 100%;
+  width: 100%;
+  display: block;
+  /* Opcional */
+  object-fit: cover;
+  object-position: center center;
+}
+
+img {
+  aspect-ratio: 16/9;
+}
+
+/* Reseteamos los enlaces para que funcionen como cajas y quitamos su decoracion */
+a {
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+}
+
+/* ... Excepto las que se encuentran en parrafos */
+p a {
+  display: inline;
+}
+
+/* Quitamos las vinhetas de los <li> */
+li {
+  list-style-type: none;
+}
+
+/* Configuramos anclas suaves y el tamaño de la fuente */
+html {
+  font-size: 10px;
+  scroll-behavior: smooth;
+}
+
+/* Desactivar algunoss estilos por defecto de las principales etiquetas de texto */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+a,
+strong,
+blockquote,
+i,
+b,
+u,
+em {
+  font-size: 1.6rem;
+  /*
+    font-weight: inherit;
+    font-style: inherit;
+    text-decoration: none;
+  */
+  color: inherit;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+p {
+  text-wrap: pretty;
+}
+
+/* Evitamos problemas con los lineas separadoras hr */
+hr {
+  border-style: inset;
+  border-width: 1px;
+}
+
+/* Evitamos problemas con los pseudoelementos de quotes */
+blockquote:before,
+blockquote:after,
+b:before,
+b:after {
+  content: "";
+  content: none;
+}
+
+/* Configuramos el texto que seleccionamos */
+::selection {
+  color: light-dark(var(--color-claro), var(--color-oscuro));
+  background-color: light-dark(var(--color-oscuro), var(--color-claro));
+}
+
+/* Nivelamos problemas de tipografias y colocacion de formularios */
+form,
+input,
+textarea,
+select,
+button,
+label {
+  font-family: inherit;
+  font-size: inherit;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  background-color: transparent;
+  display: block;
+  color: inherit;
+  /* Opcional*/
+  appearance: none;
+}
+textarea {
+  resize: none;
+  field-sizing: content;
+  text-wrap: pretty;
+}
+button {
+  cursor: pointer;
+}
+
+/* Reseteamos las tablas */
+table,
+tr,
+td {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Evitamos problemas con las svg */
+svg {
+  width: 100%;
+  display: block;
+  fill: currentColor;
+}
+
+/* Configuramos la tipografia para toda la web */
+body {
+  min-height: 100dvh;
+  font-size: 1.6rem;
+  font-family: var(--tipo-principal);
+  color: light-dark(var(--color-oscuro), var(--color-claro));
+  background-color: light-dark(var(--color-claro), var(--color-oscuro));
+  /* Opcional */
+  line-height: 1.4rem;
+  /* anterior en em */
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  /*font-smooth: always;*/
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /*align-content: center;*/
+  /*
+    scrollbar-color: blue skyblue;
+    scrollbar-width: none;
+    */
+}
+
+/* Para evitar que scroll siga en la pagina al terminar su recorrido del contenedor */
+.sidebar,
+.article {
+  overscroll-behavior: contain;
+}
