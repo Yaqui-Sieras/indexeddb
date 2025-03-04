@@ -4,9 +4,6 @@ import { detallesBD } from "../bd/estructura.js";
 // Inicidor de la base de datos
 import { IniciarBaseDatos } from "./baseDatosIniciador.js";
 
-// Actualizador del anho del copyright
-import { anhoCopyAuto } from "./anhoCopyAuto.js";
-
 // Base de datos
 let bd;
 
@@ -19,7 +16,6 @@ let estado = "lista";
 let lista_contactos = document.querySelector("#lista_contactos");
 let formulario = document.querySelector("#formulario");
 let vista_detallada = document.querySelector("#vista_detallada");
-let anhoCopy = document.querySelector("#anhoCopy");
 
 // Parte de lista de contacto
 let buscador = document.querySelector("#buscador");
@@ -320,8 +316,6 @@ BtnEliminar.onclick = (evento) => {
 
 // Inicialización
 window.onload = async () => {
-  anhoCopyAuto(anhoCopy);
-
   console.log("Iniciando Base de Datos...");
   bd = await IniciarBaseDatos(detallesBD);
   console.log("Base de Datos iniciada");
