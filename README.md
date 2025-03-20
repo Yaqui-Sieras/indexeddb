@@ -1,2 +1,3 @@
-# indexeddb
- pruebas con indexeddb
+# Practicas de indexeddb
+
+Pruebas con indexeddb
