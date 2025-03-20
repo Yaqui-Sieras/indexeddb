@@ -8,7 +8,10 @@
     <title>Prueba IndexDB</title>
     <!-- Hojas de estilo -->
     <link rel="stylesheet" href="https://yaqui-sieras.github.io/miReset-css/miReset.css" type="text/css">
+    <!--
+    Solo para pruebas en local
     <link rel="stylesheet" href="../css/miReset.css" type="text/css">
+    -->
     <link rel="stylesheet" href="../css/inicio.css" type="text/css">
     <link rel="stylesheet" href="../css/formulario.css" type="text/css">
     <link rel="stylesheet" href="../css/vista_detallada.css" type="text/css">
@@ -18,29 +21,29 @@
 
 <body>
     <div class="pag">
-        <header class="pag__cabecera">
-            <div class="cabecera__logo">
-                <div class="logo"></div>
-                <h1>Lista de contactos</h1>
-            </div>
-            <div class="cabecera__buscador">
-                <input type="text" id="buscador" class="buscador__input" placeholder="Buscar...">
-                <span>etiquetas</span>
-                <span>filtros</span>
-            </div>
-            <div class="cabecera__opciones">
-                <span>configuración</span>
-            </div>
-        </header>
         <main class="pag__contenido">
-            <section id="lista_contactos" class="contenido__contactos">
-                <div id="lista" class="contactos__lista">
+            <section id="seccion_inicio" class="contenido__inicio">
+                <header class="inicio__cabecera">
+                    <div class="cabecera__logo">
+                        <div class="logo"></div>
+                        <h1>Agenda de contactos</h1>
+                    </div>
+                    <div class="cabecera__buscador">
+                        <input type="text" id="buscador" class="buscador__input" placeholder="Buscar...">
+                        <div class="buscador__etiquetas"></div>
+                        <div class="buscador__filtros"></div>
+                    </div>
+                    <div class="cabecera__opciones">
+                        <div class="opciones__configuracion"></div>
+                    </div>
+                </header>
+                <div id="lista_contactos" class="inicio__lista">
                     <article class="lista__vacia">
                         <h2>Sin contactos</h2>
                     </article>
                 </div>
-                <div class="contactos__acciones">
-                    <button type="button" id="btn-agregar" value="crear">Nuevo</button>
+                <div class="inicio__agg_contacto">
+                    <button type="button" id="btn-agregar" class="agg__btn" value="crear"> + </button>
                 </div>
             </section>
             <section id="formulario" class="contenido__cajaFormulario parte_oculta">
@@ -74,12 +77,17 @@
                 </form>
             </section>
             <section id="vista_detallada" class="contenido__vistaDetallada parte_oculta">
+                <header class="vistaDetallada__cabecera">
+                    <div class="cabecera__retroceder">
+                        <button type="button" id="btn-retroceder">Atras</button>
+                    </div>
+                    <div class="cabecera__acciones">
+                        <button type="button" id="btn-editar" value="editar">Editar</button>
+                        <input title="fav" type="checkbox" id="btn-favorito" value="true" \>
+                        <button type="button" id="btn-configuracion">Configuración</button>
+                    </div>
+                </header>
                 <table class="vistaDetallada__tabla">
-                    <tr class="vistaDetallada__acciones">
-                        <td colspan="2">
-                            <button type="button" id="btn-retroceder">Atras</button>
-                        </td>
-                    </tr>
                     <tr class="vistaDetallada__campo">
                         <td>
                             <p>Nombre :</p>
@@ -104,20 +112,13 @@
                             <p id="campo__dni">DNI</p>
                         </td>
                     </tr>
-                    <tr class="vistaDetallada__acciones">
-                        <td colspan="2">
-                            <button type="button" id="btn-editar" value="editar">Editar</button>
-                        </td>
-                    </tr>
-                    <tr class="vistaDetallada__acciones">
-                        <td colspan="2">
-                            <button type="button" id="btn-eliminar">Eliminar</button>
-                        </td>
-                    </tr>
                 </table>
+                <div class="vistaDetallada__eliminar">
+                    <div id="btn-eliminar"></div>
+                </div>
             </section>
         </main>
-        <footer class="pag__footer">
+        <footer class="pag__pie">
             <p>
                 <a href="https://yaqui-sieras.github.io"><small>Yaqui Sieras</small></a>
                 <small>&copy;</small>
@@ -127,7 +128,7 @@
     </div>
 
     <script src="../js/anhoCopyAuto.js"></script>
-    <script type="module" src="../js/index.js"></script>
+    <script type="module" src="../js/reformas_index.js"></script>
 </body>
 
 </html>
