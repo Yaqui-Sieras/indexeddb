@@ -13,13 +13,13 @@ let estado = "lista";
 // Elementos del DOM
 
 // Estructura pagina
-let lista_contactos = document.querySelector("#lista_contactos");
+let lista_contactos = document.querySelector("#seccion_inicio");
 let formulario = document.querySelector("#formulario");
 let vista_detallada = document.querySelector("#vista_detallada");
 
 // Parte de lista de contacto
 let buscador = document.querySelector("#buscador");
-let listaContactos = document.querySelector("#lista");
+let listaContactos = document.querySelector("#lista_contactos");
 let BtonAgregar = document.querySelector("#btn-agregar");
 
 // Parte de formulario
@@ -32,6 +32,7 @@ let BtnCancelar = document.querySelector("#btn-cancelar");
 // Parte de Vista detallada
 let BtnRetroceder = document.querySelector("#btn-retroceder");
 let BtnEditar = document.querySelector("#btn-editar");
+let BtnFavorito = document.querySelector("#btn-favorito");
 let BtnEliminar = document.querySelector("#btn-eliminar");
 let vista_campo_nombre = document.querySelector("#campo__nombre");
 let vista_campo_apellido = document.querySelector("#campo__apellido");
@@ -69,6 +70,11 @@ function mostrarDetalles(ID) {
   let solicitud = tablaContactos.get(ID);
   solicitud.onsuccess = () => {
     let contacto = solicitud.result;
+    if (contacto.Favorito) {
+      BtnFavorito.checked = true;
+    } else {
+      BtnFavorito.checked = false;
+    }
     vista_campo_nombre.textContent = contacto.Nombre;
     vista_campo_apellido.textContent = contacto.Apellido;
     vista_campo_dni.textContent = contacto.DNI;
