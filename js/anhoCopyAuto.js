@@ -5,4 +5,6 @@ function anhoCopyAuto(anhoCopy) {
   }
 }
 
-export { anhoCopyAuto };
+let anhoCopy = document.querySelector("#anhoCopy");
+
+anhoCopyAuto(anhoCopy);
