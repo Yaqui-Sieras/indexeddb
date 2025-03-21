@@ -1,10 +1,10 @@
-function anhoCopyAuto(anhoCopy) {
+function anho_automatico(anho) {
   const fecha = new Date();
-  if (parseInt(anhoCopy.textContent) < fecha.getFullYear()) {
-    anhoCopy.textContent = fecha.getFullYear();
+  if (parseInt(anho.textContent) < fecha.getFullYear()) {
+    anho.textContent = fecha.getFullYear();
   }
 }
 
-let anhoCopy = document.querySelector("#anhoCopy");
+let anho = document.querySelector("#anho");
 
-anhoCopyAuto(anhoCopy);
+anho_automatico(anho);
