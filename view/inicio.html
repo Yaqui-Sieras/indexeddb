@@ -79,12 +79,12 @@
             <section id="vista_detallada" class="contenido__vistaDetallada parte_oculta">
                 <header class="vistaDetallada__cabecera">
                     <div class="cabecera__retroceder">
-                        <button type="button" id="btn-retroceder">Atras</button>
+                        <div id="btn-retroceder" class="acciones__retroceder"></div>
                     </div>
                     <div class="cabecera__acciones">
-                        <button type="button" id="btn-editar" value="editar">Editar</button>
-                        <input title="fav" type="checkbox" id="btn-favorito" value="true" \>
-                        <button type="button" id="btn-configuracion">Configuración</button>
+                        <div id="btn-editar" class="acciones__editar"></div>
+                        <input title="fav" type="checkbox" id="btn-favorito" class="acciones__favorito" value="true" \>
+                        <div id="btn-configuracion" class="acciones__configuracion"></div>
                     </div>
                 </header>
                 <table class="vistaDetallada__tabla">
@@ -120,9 +120,9 @@
         </main>
         <footer class="pag__pie">
             <p>
-                <a href="https://yaqui-sieras.github.io"><small>Yaqui Sieras</small></a>
-                <small>&copy;</small>
-                <small id="anhoCopy">2024</small>
+                <small>Desarrollado por </small><a href="https://yaqui-sieras.github.io"><small>Yaqui
+                        Sieras</small></a>
+                <small id="anho">2025</small>
             </p>
         </footer>
     </div>
