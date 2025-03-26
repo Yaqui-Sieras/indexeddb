@@ -29,7 +29,7 @@
       .logo {
         width: 3.2rem;
         height: 3.2rem;
-        background: url(../ico/icons8-estrella-doodle-32.png);
+        background: url(../ico/icons8-estrella-doodle-32.png) no-repeat;
         background-size: contain;
       }
     }
